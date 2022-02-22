@@ -1,7 +1,3 @@
-<p align="center">
-	<img src="https://user-images.githubusercontent.com/56568247/155062204-49248d16-af91-4c7f-87ec-364f914221de.png" width="200"/>
-</p>
-
 <h2 align="center">Visual Select — a DatoCMS Plugin</h2>
 <div align="center">
 	<p>Elegantly visualize a group of options in the DatoCMS Editor using colors, images, and more.</p>

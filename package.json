@@ -58,7 +58,7 @@
 	"datoCmsPlugin": {
 		"title": "Visual Select",
 		"previewImage": "assets/preview.mp4",
-		"coverImage": "assets/cover.jpg",
+		"coverImage": "assets/cover.png",
 		"entryPoint": "build/index.html",
 		"permissions": []
 	}
