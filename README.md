@@ -31,13 +31,13 @@ To understand the behaviour of `extends`, see the [Global Presets](#global-prese
 | Key | Value | Description |
 | --- | --- | --- |
 | `name` | `string` | The label displayed in the editor |
-| `type` | `string` | The visualization type, valid options include `color` and `image` |
+| `type` | `string` | The visualization type, see table below |
 | `display` | `string` | The visualization display value, see table below |
 | `value` | `string` | The value returned by the API |
 
 #### Visualization displays
 
-| Type | Format | Example |
+| Type | Display | Example |
 | --- | --- | --- |
 | `color` | `hex` | `#bada55` |
 | `image` | `url` | `https://example.com/my-icon.svg` |
