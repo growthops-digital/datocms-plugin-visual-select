@@ -1,0 +1,69 @@
+{
+	"name": "datocms-plugin-visual-select",
+	"homepage": "https://github.com/growthops-digital/datocms-plugin-visual-select#readme",
+	"description": "Elegantly visualize a group of options in the DatoCMS Editor using colors, images, and more.",
+	"version": "0.1.0",
+	"files": [
+		"build",
+		"assets"
+	],
+	"license": "UNLICENSED",
+	"keywords": [
+		"datocms-plugin"
+	],
+	"dependencies": {
+		"@types/node": "^17.0.18",
+		"@types/react": "^17.0.39",
+		"@types/react-dom": "^17.0.11",
+		"classnames": "^2.3.1",
+		"datocms-plugin-sdk": "^0.5.2",
+		"datocms-react-ui": "^0.5.2",
+		"lodash-es": "^4.17.21",
+		"react": "^17.0.2",
+		"react-dom": "^17.0.2",
+		"react-scripts": "5.0.0",
+		"remeda": "^0.0.32",
+		"typescript": "^4.5.5"
+	},
+	"scripts": {
+		"start": "cross-env BROWSER='none' PUBLIC_URL='/' react-scripts start",
+		"build": "cross-env PUBLIC_URL='.' react-scripts build",
+		"test": "react-scripts test",
+		"eject": "react-scripts eject",
+		"prepublishOnly": "npm run build",
+		"lint": "eslint ."
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/growthops-digital/datocms-plugin-visual-select.git"
+	},
+	"browserslist": {
+		"production": [
+			">0.2%",
+			"not dead",
+			"not op_mini all"
+		],
+		"development": [
+			"last 1 chrome version",
+			"last 1 firefox version",
+			"last 1 safari version"
+		]
+	},
+	"devDependencies": {
+		"@growthops/eslint-config": "^1.1.5",
+		"@types/lodash-es": "^4.17.6",
+		"@typescript-eslint/eslint-plugin": "^5.12.0",
+		"@typescript-eslint/parser": "^5.12.0",
+		"cross-env": "^7.0.3",
+		"eslint": "^8.9.0",
+		"eslint-plugin-jsx-a11y": "^6.5.1",
+		"eslint-plugin-react": "^7.28.0"
+	},
+	"datoCmsPlugin": {
+		"title": "Visual Select",
+		"previewImage": "assets/preview-image.jpg",
+		"coverImage": "assets/cover-video.mp4",
+		"entryPoint": "build/index.html",
+		"permissions": []
+	}
+}

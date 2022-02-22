@@ -1,0 +1,128 @@
+<p align="center">
+	<img src="https://user-images.githubusercontent.com/56568247/155062204-49248d16-af91-4c7f-87ec-364f914221de.png" width="200"/>
+</p>
+
+<h2 align="center">Visual Select — a DatoCMS Plugin</h2>
+<div align="center">
+	<p>Elegantly visualize a group of options in the DatoCMS Editor using colors, images, and more.</p>
+</div>
+
+<p align="center">
+	<img src="https://user-images.githubusercontent.com/56568247/155078720-2736183f-424f-4fa2-a049-c8050566e335.jpg"/>
+</p>
+
+---
+
+## Configuration
+This plugin is designed to be used on a per-field basis. To get started add a single-string text field to any model or block, and under the presentation tab change the field editor from "Text input" to "Visual Select".
+
+<p align="center">
+	<img src="https://user-images.githubusercontent.com/56568247/155075251-dca1b09a-afa3-4293-ba49-aadc41702206.png"/>
+</p>
+
+### JSON Data Structure
+
+Each field supports a JSON data / configuration object. This object supports 2 array values. The first is `extends` and the second is `options`.
+
+To understand the behaviour of `extends`, see the [Global Presets](#global-presets) section below.
+
+The `options` array represents each visual option displayed to the editor, as well the underlying value type returned by the API. There are 4 required fields for each of these objects:
+
+| Key | Value | Description |
+| --- | --- | --- |
+| `name` | `string` | The name / label displayed in the editor |
+| `type` | `string` | The visualization type, either `color` or `image` |
+| `display` | `string` | The visualization display value. In the case of `color` this is a hex code (eg: `#bada55`), or a URL for `image` (eg: https://example.com/my-icon.svg) |
+| `value` | `string` | The value to be returned via the API |
+
+### Example configuration
+
+```json
+{
+	"options": [
+		{
+			"name": "Green",
+			"type": "color",
+			"display": "#bada55",
+			"value": "text-brand-green"
+		},
+		{
+			"name": "Yellow",
+			"type": "color",
+			"display": "#fcba03",
+			"value": "text-brand-yellow"
+		}
+	]
+}
+```
+
+## Global Presets
+
+You'll often have a collection of colors, icons, etc. that you want to make available across multiple different models or blocks. Instead of repeating the same configuration object on each field, you can make use of the global presets functionality.
+
+To supply a global presets object, navigate to the **Visual Select** plugin settings under **_Settings > Plugins > Visual Select_**.
+
+<p align="center">
+	<img src="https://user-images.githubusercontent.com/56568247/155076764-d671a857-eab4-4d9b-a0f7-818e17e1f96f.jpg"/>
+</p>
+
+### JSON Data Structure
+
+The JSON data structure for global presets is a simple key/value pair (dictionary) object, where the value is an array of options with the same form as those used on individual fields.
+
+To make use of a global preset, simply define the global preset, eg:
+
+```json
+{
+	"brandColors": [
+		{
+			"name": "Green",
+			"type": "color",
+			"display": "#bada55",
+			"value": "text-brand-green"
+		},
+		{
+			"name": "Yellow",
+			"type": "color",
+			"display": "#fcba03",
+			"value": "text-brand-yellow"
+		}
+	]
+}
+```
+
+and then on a fields configuration object, use the `extends` key:
+
+```json
+{
+    "extends": ["brandColors"]
+}
+```
+
+You can extend multiple presets if required, and you can also additionally add options to be displayed after the presets:
+
+```json
+{
+	"extends": ["brandColors"],
+	"options": [
+		{
+			"name": "Blue",
+			"type": "color",
+			"display": "#00d0ff",
+			"value": "text-specials-blue"
+		},
+		{
+			"name": "Purple",
+			"type": "color",
+			"display": "#8b05eb",
+			"value": "text-specials-purple"
+		}
+	]
+}
+```
+
+The example above would produce the following editor visualization (where `Green` and `Yellow` are coming from the `brandColors` preset, and `Blue` and `Purple` are from the additional options supplied):
+
+<p align="center">
+	<img src="https://user-images.githubusercontent.com/56568247/155077897-e11efc86-31bc-47a4-8233-3a60b1d74a3e.jpg"/>
+</p>

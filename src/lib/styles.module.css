@@ -1,0 +1,133 @@
+.text-label {
+	text-transform: uppercase;
+	font-weight: bold;
+	font-size: var(--font-size-xxs);
+	letter-spacing: 0.01rem;
+}
+
+.textarea {
+	border-color: var(--border-color);
+	border-style: solid;
+	border-width: 1px;
+	box-sizing: border-box;
+	transition: all 100ms ease 0s;
+	width: 100%;
+}
+
+.textarea:hover {
+	border-color: var(--darker-border-color);
+}
+
+.textarea:focus {
+	border-color: var(--accent-color);
+	border-style: solid;
+	border-width: 1px;
+	box-shadow: 0 0 0 3px var(--semi-transparent-accent-color);
+	outline: 0;
+}
+
+.fieldset {
+	border: 0;
+	box-sizing: border-box;
+	display: grid;
+	grid-gap: var(--spacing-s);
+	/* 7.4589rem is a magic number that ensures the right hand edge of the grid
+	lines up nicely with the form/field container set up by DatoCMS */
+	grid-template-columns: repeat(auto-fit, minmax(0, 7.4589rem));
+	padding: 0;
+}
+
+.label {
+	padding: 0;
+}
+
+.radio {
+	height: 1px;
+	left: -10000px;
+	overflow: hidden;
+	position: absolute;
+	top: auto;
+	width: 1px;
+}
+
+.mark {
+	border-color: var(--border-color);
+	border-radius: 5px;
+	border-style: solid;
+	border-width: 1px;
+	color: var(--base-body-color);
+	cursor: pointer;
+	font-size: var(--font-size-xs);
+	padding: var(--spacing-s);
+	text-align: center;
+	transition: all .15s cubic-bezier(.55, 0, .1, 1);
+}
+
+.color-preview {
+	border-radius: 3px;
+	height: var(--spacing-xl);
+	width: 100%;
+}
+
+.image-preview-container {
+	background: var(--light-bg-color);
+	border-radius: 3px;
+	padding-top: 100%;
+	position: relative;
+}
+
+.image-preview {
+	bottom: 0;
+	height: calc(100% - var(--spacing-m) * 2);
+	left: 0;
+	margin: var(--spacing-m);
+	object-fit: contain;
+	object-position: center;
+	position: absolute;
+	right: 0;
+	top: 0;
+	width: calc(100% - var(--spacing-m) * 2);
+}
+
+.name {
+	display: block;
+	line-height: 1;
+	margin-bottom: 0;
+	margin-left: 0;
+	margin-right: 0;
+	margin-top: var(--spacing-s);
+	overflow: hidden;
+	padding: 0;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.label input:checked ~ .mark {
+	border-color: var(--accent-color);
+}
+
+.label:hover .mark,
+.label:focus .mark {
+	box-shadow: 0 0 0 3px var(--semi-transparent-accent-color);
+}
+
+.status-bar {
+	align-items: center;
+	display: flex;
+	margin-bottom: var(--spacing-m);
+}
+
+.status-message {
+	font-size: var(--font-size-s);
+	margin-left: var(--spacing-s);
+	margin-top: 2px;
+}
+
+.status-icon {
+	color: var(--notice-color);
+	width: 22px;
+}
+
+.status-bar.has-error .status-icon {
+	color: var(--alert-color);
+}
