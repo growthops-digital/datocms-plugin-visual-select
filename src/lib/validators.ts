@@ -1,8 +1,8 @@
 import {isArray, isObject, isString, keys} from 'remeda';
 import type {Result} from './types';
 
-const VALID_PREFAB_KEYS = ['name', 'type', 'display', 'value'];
-const VALID_PREFAB_TYPES = ['color', 'image'];
+const VALID_OPTION_KEYS = ['name', 'type', 'display', 'value'];
+const VALID_OPTION_TYPES = ['color', 'image'];
 
 const error = (message: string): Result => ({
 	type: 'error',
@@ -14,19 +14,19 @@ const validateOption = (data: unknown, index: number): Result => {
 		return error('Option data is not an object');
 	}
 
-	for (let i = 0; i < VALID_PREFAB_KEYS.length; i++) {
-		const value = data[VALID_PREFAB_KEYS[i]];
+	for (let i = 0; i < VALID_OPTION_KEYS.length; i++) {
+		const value = data[VALID_OPTION_KEYS[i]];
 
 		if (value === undefined) {
-			return error(`Option at position ${index} is missing the [${VALID_PREFAB_KEYS[i]}] field`);
+			return error(`Option at position ${index} is missing the [${VALID_OPTION_KEYS[i]}] field`);
 		}
 
 		if (!isString(value)) {
-			return error(`Option at position ${index} has a non-string [${VALID_PREFAB_KEYS[i]}] field`);
+			return error(`Option at position ${index} has a non-string [${VALID_OPTION_KEYS[i]}] field`);
 		}
 	}
 
-	if (!VALID_PREFAB_TYPES.includes(data.type as string)) {
+	if (!VALID_OPTION_TYPES.includes(data.type as string)) {
 		return error(`Option at position ${index} has an invalid type of "${data.type as string}"`);
 	}
 
@@ -78,13 +78,13 @@ const validateFieldConfig = (data: unknown): Result => {
 		return error('[Extends] is not an array of strings');
 	}
 
-	if (data.prefabs !== undefined && !isArray(data.prefabs)) {
+	if (data.options !== undefined && !isArray(data.options)) {
 		return error('[Options] is not an array');
 	}
 
-	if (data.prefabs !== undefined && isArray(data.prefabs)) {
-		for (let i = 0; i < data.prefabs.length; i++) {
-			const element = data.prefabs[i];
+	if (data.options !== undefined && isArray(data.options)) {
+		for (let i = 0; i < data.options.length; i++) {
+			const element = data.options[i];
 			const result = validateOption(element, i);
 
 			if (result.type === 'error') {

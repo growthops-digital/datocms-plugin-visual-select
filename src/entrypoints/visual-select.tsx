@@ -11,12 +11,12 @@ type VisualSelectProps = {
 };
 
 const VisualSelect = ({ctx}: VisualSelectProps): JSX.Element => {
-	const resolvedState = useMemo(() => {
+	const options = useMemo(() => {
 		const collection = JSON.parse(ctx.parameters.collection as string) as Collection;
 		const allPresets = JSON.parse(ctx.plugin.attributes.parameters.presets as string) as Record<string, Option[]>;
-		const selectedPresets = (collection.extends ?? []).flatMap(key => allPresets[key]);
+		const presetOptions = (collection.extends ?? []).flatMap(key => allPresets[key]);
 
-		return [...selectedPresets, ...collection.options ?? []];
+		return [...presetOptions, ...collection.options ?? []];
 	}, [ctx.parameters.collection]);
 
 	const currentValue = useMemo(() => get(ctx.formValues, ctx.fieldPath) as string, [ctx.formValues, ctx.fieldPath]);
@@ -28,27 +28,27 @@ const VisualSelect = ({ctx}: VisualSelectProps): JSX.Element => {
 	return (
 		<Canvas ctx={ctx}>
 			<fieldset id={ctx.field.id} className={s['fieldset']}>
-				{resolvedState.map(prefab => (
-					<label key={prefab.name} className={s['label']} htmlFor={`${prefab.name}_${ctx.field.id}`}>
+				{options.map(option => (
+					<label key={option.name} className={s['label']} htmlFor={`${option.name}_${ctx.field.id}`}>
 						<input
-							id={`${prefab.name}_${ctx.field.id}`}
+							id={`${option.name}_${ctx.field.id}`}
 							className={s['radio']}
 							type="radio"
-							value={prefab.value}
-							name="prefabs"
-							defaultChecked={currentValue == prefab.value}
+							value={option.value}
+							name="options"
+							defaultChecked={currentValue == option.value}
 							onChange={handleOnChange}
 						/>
 						<div className={s['mark']}>
-							{prefab.type === 'color' && (
-								<div className={s['color-preview']} style={{backgroundColor: prefab.display}}/>
+							{option.type === 'color' && (
+								<div className={s['color-preview']} style={{backgroundColor: option.display}}/>
 							)}
-							{prefab.type === 'image' && (
+							{option.type === 'image' && (
 								<div className={s['image-preview-container']}>
-									<img src={prefab.display} alt={prefab.name} className={s['image-preview']}/>
+									<img src={option.display} alt={option.name} className={s['image-preview']}/>
 								</div>
 							)}
-							<span className={s['name']}>{prefab.name}</span>
+							<span className={s['name']}>{option.name}</span>
 						</div>
 					</label>
 				))}
