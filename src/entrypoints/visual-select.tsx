@@ -19,7 +19,7 @@ const VisualSelect = ({ctx}: VisualSelectProps): JSX.Element => {
 		return [...selectedPresets, ...collection.options ?? []];
 	}, [ctx.parameters.collection]);
 
-	const currentValue = useMemo(() => get(ctx.formValues, ctx.fieldPath), [ctx.formValues, ctx.fieldPath]);
+	const currentValue = useMemo(() => get(ctx.formValues, ctx.fieldPath) as string, [ctx.formValues, ctx.fieldPath]);
 
 	const handleOnChange = useCallback((event: ChangeEvent<HTMLInputElement>) => {
 		ctx.setFieldValue(ctx.fieldPath, event.target.value);
