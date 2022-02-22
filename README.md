@@ -14,7 +14,7 @@
 ---
 
 ## Configuration
-This plugin is designed to be used on a per-field basis. To get started add a single-string text field to any model or block, and under the presentation tab change the field editor from "Text input" to "Visual Select".
+This plugin is designed to be used on a per-field basis. To get started, add a single-string text field to any model or block, and under the presentation tab change the field editor from "Text input" to "Visual Select".
 
 <p align="center">
 	<img src="https://user-images.githubusercontent.com/56568247/155075251-dca1b09a-afa3-4293-ba49-aadc41702206.png"/>
@@ -22,18 +22,25 @@ This plugin is designed to be used on a per-field basis. To get started add a si
 
 ### JSON Data Structure
 
-Each field supports a JSON data / configuration object. This object supports 2 array values. The first is `extends` and the second is `options`.
+Each field requires a JSON configuration object. This object has 2 key fields — the first is `extends` and the second is `options`.
 
 To understand the behaviour of `extends`, see the [Global Presets](#global-presets) section below.
 
-The `options` array represents each visual option displayed to the editor, as well the underlying value type returned by the API. There are 4 required fields for each of these objects:
+`options` represent each visual option displayed to the editor, as well the underlying value returned by the API. There are 4 required fields on each option:
 
 | Key | Value | Description |
 | --- | --- | --- |
-| `name` | `string` | The name / label displayed in the editor |
-| `type` | `string` | The visualization type, either `color` or `image` |
-| `display` | `string` | The visualization display value. In the case of `color` this is a hex code (eg: `#bada55`), or a URL for `image` (eg: https://example.com/my-icon.svg) |
-| `value` | `string` | The value to be returned via the API |
+| `name` | `string` | The label displayed in the editor |
+| `type` | `string` | The visualization type, valid options include `color` and `image` |
+| `display` | `string` | The visualization display value, see table below |
+| `value` | `string` | The value returned by the API |
+
+#### Visualization displays
+
+| Type | Format | Example |
+| --- | --- | --- |
+| `color` | `hex` | `#bada55` |
+| `image` | `url` | `https://example.com/my-icon.svg` |
 
 ### Example configuration
 
@@ -58,7 +65,7 @@ The `options` array represents each visual option displayed to the editor, as we
 
 ## Global Presets
 
-You'll often have a collection of colors, icons, etc. that you want to make available across multiple different models or blocks. Instead of repeating the same configuration object on each field, you can make use of the global presets functionality.
+You'll often have a collection of options that you want to make available across multiple different models or blocks. Instead of repeating the same configuration object on each field, you can make use of the global presets functionality.
 
 To supply a global presets object, navigate to the **Visual Select** plugin settings under **_Settings > Plugins > Visual Select_**.
 
@@ -68,9 +75,9 @@ To supply a global presets object, navigate to the **Visual Select** plugin sett
 
 ### JSON Data Structure
 
-The JSON data structure for global presets is a simple key/value pair (dictionary) object, where the value is an array of options with the same form as those used on individual fields.
+The JSON configuration for global presets is a simple dictionary object, where each entry is an array of options following the same structure as those used on individual fields.
 
-To make use of a global preset, simply define the global preset, eg:
+To make use of a global preset, first define the dictionary object in the plugin settings:
 
 ```json
 {
@@ -91,7 +98,7 @@ To make use of a global preset, simply define the global preset, eg:
 }
 ```
 
-and then on a fields configuration object, use the `extends` key:
+and then in an individual field's configuration object, use the `extends` key:
 
 ```json
 {
@@ -99,7 +106,7 @@ and then on a fields configuration object, use the `extends` key:
 }
 ```
 
-You can extend multiple presets if required, and you can also additionally add options to be displayed after the presets:
+You can extend multiple presets if required, and you can also supply additional options:
 
 ```json
 {
