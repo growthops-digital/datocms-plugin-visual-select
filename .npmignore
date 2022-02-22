@@ -1,4 +1,5 @@
 /public
 /src
+/.github
 .editorconfig
 .eslintrc.js
