@@ -19,7 +19,7 @@ const VisualSelect = ({ctx}: VisualSelectProps): JSX.Element => {
 		const presetOptions = (collection.extends ?? []).flatMap(key => allPresets[key]);
 
 		return [...presetOptions, ...collection.options ?? []];
-	}, [ctx.parameters.collection]);
+	}, [ctx.parameters.collection, ctx.plugin.attributes.parameters.presets]);
 
 	const currentValue = useMemo(() => get(ctx.formValues, ctx.fieldPath) as string, [ctx.formValues, ctx.fieldPath]);
 
