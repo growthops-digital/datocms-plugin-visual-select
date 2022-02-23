@@ -22,7 +22,7 @@ Each field requires a JSON configuration object. This object has 2 key fields â€
 
 To understand the behaviour of `extends`, see the [Global Presets](#global-presets) section below.
 
-`options` represent each visual option displayed to the editor, as well the underlying value returned by the API. There are 4 required fields on each option:
+`options` represents each visual option displayed to the editor, as well the underlying value returned by the API. There are 4 required fields on each option:
 
 | Key | Value | Description |
 | --- | --- | --- |
