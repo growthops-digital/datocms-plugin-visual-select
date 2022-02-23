@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.10](https://github.com/growthops-digital/datocms-plugin-visual-select/compare/v0.1.9...v0.1.10) (2022-02-23)
+
+
+### Features
+
+* create default configuration object for fields ([82eb200](https://github.com/growthops-digital/datocms-plugin-visual-select/commit/82eb2002d23f7aae5c9e57c9677637d1cc8c71c3))
+* format all JSON on save ([d9afe4e](https://github.com/growthops-digital/datocms-plugin-visual-select/commit/d9afe4e8428288d02dd2d361660005451636b06e))
+
+
+### Bug Fixes
+
+* ensure all external documentation links open in a new tab ([bb99273](https://github.com/growthops-digital/datocms-plugin-visual-select/commit/bb99273403c64414e347c916b6e672b1d58d825f))
+
 ### [0.1.9](https://github.com/growthops-digital/datocms-plugin-visual-select/compare/v0.1.8...v0.1.9) (2022-02-23)
 
 ### [0.1.8](https://github.com/growthops-digital/datocms-plugin-visual-select/compare/v0.1.7...v0.1.8) (2022-02-22)
