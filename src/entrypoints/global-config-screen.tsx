@@ -54,8 +54,22 @@ const GlobalConfigScreen = ({ctx}: GlobalConfigScreenProps): JSX.Element => {
 		<Canvas ctx={ctx}>
 			<div className={s['preset-help']}>
 				<span className={s['preset-help-header']}>Get started:</span>
-				<a className={s['preset-help-link']} href={config.endpoints.docs}>Documentation</a>
-				<a className={s['preset-help-link']} href={config.endpoints.issues}>Issues / Feature Requests</a>
+				<a
+					target="_blank"
+					rel="noreferrer"
+					className={s['preset-help-link']}
+					href={config.endpoints.docs}
+				>
+					Documentation
+				</a>
+				<a
+					target="_blank"
+					rel="noreferrer"
+					className={s['preset-help-link']}
+					href={config.endpoints.issues}
+				>
+					Issues / Feature Requests
+				</a>
 			</div>
 			<form className={s['presets-config-form']} onSubmit={handleOnSubmit}>
 				<FieldGroup>

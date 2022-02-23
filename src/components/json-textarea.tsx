@@ -90,7 +90,7 @@ const JsonTextarea = ({label, initialValue, onValidChange, onError, validate}: J
 				{label !== undefined && (
 					<span className={s['text-label']}>{label}</span>
 				)}
-				<a href={config.endpoints.docs} className={s['docs-container']}>
+				<a target="_blank" rel="noreferrer" href={config.endpoints.docs} className={s['docs-container']}>
 					<Question className={s['docs-icon']}/>
 					<span className={s['docs-label']}>View Documentation</span>
 				</a>
