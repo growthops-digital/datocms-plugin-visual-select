@@ -185,3 +185,10 @@
 .presets-config-form {
 	margin-top: var(--spacing-l);
 }
+
+.no-options {
+	background: var(--light-color);
+	padding: var(--spacing-l);
+	border-radius: 5px;
+	line-height: 1;
+}

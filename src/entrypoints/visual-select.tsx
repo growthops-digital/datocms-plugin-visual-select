@@ -10,6 +10,8 @@ type VisualSelectProps = {
 	ctx: RenderFieldExtensionCtx;
 };
 
+const EMPTY_LENGTH = 0;
+
 const VisualSelect = ({ctx}: VisualSelectProps): JSX.Element => {
 	const options = useMemo(() => {
 		const collection = JSON.parse(ctx.parameters.collection as string) as Collection;
@@ -27,6 +29,9 @@ const VisualSelect = ({ctx}: VisualSelectProps): JSX.Element => {
 
 	return (
 		<Canvas ctx={ctx}>
+			{options.length === EMPTY_LENGTH && (
+				<div className={s['no-options']}>There are no options available for this field.</div>
+			)}
 			<fieldset id={ctx.field.id} className={s['fieldset']}>
 				{options.map(option => (
 					<label key={option.name} className={s['label']} htmlFor={`${option.name}_${ctx.field.id}`}>
