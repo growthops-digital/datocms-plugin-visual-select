@@ -39,6 +39,14 @@ const createInitialParameters = (
 	return initialParameters;
 };
 
+const formatParameters = (parameters: Parameters): Parameters => {
+	const rawJson = parameters.collection;
+
+	return {
+		collection: JSON.stringify(JSON.parse(rawJson), null, JSON_INDENT_SIZE),
+	};
+};
+
 const FieldConfigScreen = ({ctx}: FieldConfigScreenProps): JSX.Element => {
 	const [state, setState] = useState<Parameters>(createInitialParameters(ctx, ctx.parameters));
 	const [lastValidState, setLastValidState] = useState<Parameters>(state);
@@ -51,7 +59,7 @@ const FieldConfigScreen = ({ctx}: FieldConfigScreenProps): JSX.Element => {
 		setState(newState);
 		setLastValidState(newState);
 
-		ctx.setParameters(newState);
+		ctx.setParameters(formatParameters(newState));
 	}, []);
 
 	const handleOnError = useCallback((_result: Result) => {

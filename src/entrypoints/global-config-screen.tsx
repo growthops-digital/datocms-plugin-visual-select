@@ -21,6 +21,16 @@ type State = {
 	valid: boolean;
 };
 
+const JSON_INDENT_SIZE = 2;
+
+const formatParameters = (parameters: Parameters): Parameters => {
+	const rawJson = parameters.presets;
+
+	return {
+		presets: JSON.stringify(JSON.parse(rawJson), null, JSON_INDENT_SIZE),
+	};
+};
+
 const GlobalConfigScreen = ({ctx}: GlobalConfigScreenProps): JSX.Element => {
 	const [state, setState] = useState<State>({
 		parameters: ctx.plugin.attributes.parameters as Parameters,
@@ -30,7 +40,7 @@ const GlobalConfigScreen = ({ctx}: GlobalConfigScreenProps): JSX.Element => {
 	const handleOnSubmit = useCallback(async (event: FormEvent) => {
 		event.preventDefault();
 
-		await ctx.updatePluginParameters(state.parameters);
+		await ctx.updatePluginParameters(formatParameters(state.parameters));
 		ctx.notice('Settings updated successfully!');
 	}, [state]);
 
