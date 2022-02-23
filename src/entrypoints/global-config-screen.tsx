@@ -80,6 +80,14 @@ const GlobalConfigScreen = ({ctx}: GlobalConfigScreenProps): JSX.Element => {
 				>
 					Issues / Feature Requests
 				</a>
+				<a
+					target="_blank"
+					rel="noreferrer"
+					className={s['preset-help-link']}
+					href={config.endpoints.changelog}
+				>
+					Changelog
+				</a>
 			</div>
 			<form className={s['presets-config-form']} onSubmit={handleOnSubmit}>
 				<FieldGroup>
