@@ -1,4 +1,5 @@
 import {useState, useCallback} from 'react';
+import {isString} from 'remeda';
 import type {RenderManualFieldExtensionConfigScreenCtx} from 'datocms-plugin-sdk';
 import {Canvas} from 'datocms-react-ui';
 import {validateFieldConfig} from '../lib/validators';
@@ -13,9 +14,34 @@ type Parameters = {
 	collection: string;
 };
 
+const EMPTY_LENGTH = 0;
+const JSON_INDENT_SIZE = 2;
+
+const createInitialParameters = (
+	ctx: RenderManualFieldExtensionConfigScreenCtx,
+	parameters: Record<string, unknown>,
+): Parameters => {
+	if (isString(parameters.collection) && parameters.collection.length > EMPTY_LENGTH) {
+		return {
+			collection: parameters.collection,
+		};
+	}
+
+	const initialParameters = {
+		collection: JSON.stringify({
+			extends: [],
+			options: [],
+		}, null, JSON_INDENT_SIZE),
+	};
+
+	ctx.setParameters(initialParameters);
+
+	return initialParameters;
+};
+
 const FieldConfigScreen = ({ctx}: FieldConfigScreenProps): JSX.Element => {
-	const [state, setState] = useState<Parameters>(ctx.parameters as Parameters);
-	const [lastValidState, setLastValidState] = useState<Parameters>(ctx.parameters as Parameters);
+	const [state, setState] = useState<Parameters>(createInitialParameters(ctx, ctx.parameters));
+	const [lastValidState, setLastValidState] = useState<Parameters>(state);
 
 	const handleOnChange = useCallback((value: string) => {
 		const newState = {
