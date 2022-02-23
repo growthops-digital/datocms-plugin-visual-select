@@ -5,6 +5,8 @@ import type {RenderConfigScreenCtx} from 'datocms-plugin-sdk';
 import {validatePresetsConfig} from '../lib/validators';
 import {JsonTextarea} from '../components';
 import type {Result} from '../lib/types';
+import s from '../lib/styles.module.css';
+import config from '../config';
 
 type GlobalConfigScreenProps = {
 	ctx: RenderConfigScreenCtx;
@@ -50,7 +52,12 @@ const GlobalConfigScreen = ({ctx}: GlobalConfigScreenProps): JSX.Element => {
 
 	return (
 		<Canvas ctx={ctx}>
-			<form onSubmit={handleOnSubmit}>
+			<div className={s['preset-help']}>
+				<span className={s['preset-help-header']}>Get started:</span>
+				<a className={s['preset-help-link']} href={config.endpoints.docs}>Documentation</a>
+				<a className={s['preset-help-link']} href={config.endpoints.issues}>Issues / Feature Requests</a>
+			</div>
+			<form className={s['presets-config-form']} onSubmit={handleOnSubmit}>
 				<FieldGroup>
 					<JsonTextarea
 						label="Global Presets"

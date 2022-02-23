@@ -12,6 +12,7 @@
 	box-sizing: border-box;
 	transition: all 100ms ease 0s;
 	width: 100%;
+	margin-top: var(--spacing-s);
 }
 
 .textarea:hover {
@@ -130,4 +131,57 @@
 
 .status-bar.has-error .status-icon {
 	color: var(--alert-color);
+}
+
+.textarea-bar {
+	display: flex;
+	align-items: center;
+}
+
+.docs-container {
+	display: flex;
+	align-items: center;
+	margin-left: auto;
+	text-decoration: none;
+}
+
+.docs-container:hover,
+.docs-container:focus {
+	text-decoration: underline;
+}
+
+.docs-icon {
+	width: 16px;
+	color: var(--base-body-color);
+}
+
+.docs-label,
+.docs-label:focus span,
+.docs-label:hover span,
+.docs-label:active span,
+.docs-label:visited span {
+	font-size: var(--font-size-s);
+	color: var(--base-body-color);
+	margin-left: var(--spacing-s);
+}
+
+.preset-help {
+	display: flex;
+	align-items: center;
+	background: var(--light-color);
+	padding: var(--spacing-l);
+	border-radius: 5px;
+	line-height: 1;
+}
+
+.preset-help-header {
+	font-weight: bold;
+}
+
+.preset-help-link {
+	margin-left: var(--spacing-m);
+}
+
+.presets-config-form {
+	margin-top: var(--spacing-l);
 }

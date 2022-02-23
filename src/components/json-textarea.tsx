@@ -2,8 +2,9 @@ import React, {useCallback, useMemo, useState} from 'react';
 import type {ChangeEvent} from 'react';
 import cn from 'classnames';
 import type {Result} from '../lib/types';
-import {Success, Error} from '../svgs';
+import {Success, Error, Question} from '../svgs';
 import s from '../lib/styles.module.css';
+import config from '../config';
 
 type JsonTextareaProps = {
 	label?: string;
@@ -85,9 +86,15 @@ const JsonTextarea = ({label, initialValue, onValidChange, onError, validate}: J
 
 	return (
 		<React.Fragment>
-			{label !== undefined && (
-				<span className={s['text-label']}>{label}</span>
-			)}
+			<div className={s['textarea-bar']}>
+				{label !== undefined && (
+					<span className={s['text-label']}>{label}</span>
+				)}
+				<a href={config.endpoints.docs} className={s['docs-container']}>
+					<Question className={s['docs-icon']}/>
+					<span className={s['docs-label']}>View Documentation</span>
+				</a>
+			</div>
 			<textarea
 				rows={10}
 				className={s['textarea']}

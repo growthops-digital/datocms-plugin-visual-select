@@ -35,6 +35,7 @@ const FieldConfigScreen = ({ctx}: FieldConfigScreenProps): JSX.Element => {
 	return (
 		<Canvas ctx={ctx}>
 			<JsonTextarea
+				label="Field Configuration"
 				initialValue={state.collection}
 				validate={validateFieldConfig}
 				onValidChange={handleOnChange}
