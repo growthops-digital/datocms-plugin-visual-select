@@ -5,6 +5,7 @@ import {Canvas} from 'datocms-react-ui';
 import {validateFieldConfig} from '../lib/validators';
 import {JsonTextarea} from '../components';
 import type {Result} from '../lib/types';
+import {EMPTY_LENGTH, JSON_INDENT_SIZE} from '../constants';
 
 type FieldConfigScreenProps = {
   ctx: RenderManualFieldExtensionConfigScreenCtx;
@@ -13,9 +14,6 @@ type FieldConfigScreenProps = {
 type Parameters = {
 	collection: string;
 };
-
-const EMPTY_LENGTH = 0;
-const JSON_INDENT_SIZE = 2;
 
 const createInitialParameters = (
 	ctx: RenderManualFieldExtensionConfigScreenCtx,

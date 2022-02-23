@@ -7,6 +7,7 @@ import {JsonTextarea} from '../components';
 import type {Result} from '../lib/types';
 import s from '../lib/styles.module.css';
 import config from '../config';
+import {JSON_INDENT_SIZE, MESSAGE_SETTINGS_UPDATED} from '../constants';
 
 type GlobalConfigScreenProps = {
 	ctx: RenderConfigScreenCtx;
@@ -20,8 +21,6 @@ type State = {
 	parameters: Parameters;
 	valid: boolean;
 };
-
-const JSON_INDENT_SIZE = 2;
 
 const formatParameters = (parameters: Parameters): Parameters => {
 	const rawJson = parameters.presets;
@@ -41,7 +40,7 @@ const GlobalConfigScreen = ({ctx}: GlobalConfigScreenProps): JSX.Element => {
 		event.preventDefault();
 
 		await ctx.updatePluginParameters(formatParameters(state.parameters));
-		ctx.notice('Settings updated successfully!');
+		ctx.notice(MESSAGE_SETTINGS_UPDATED);
 	}, [state]);
 
 	const handleOnChange = useCallback((value: string) => {

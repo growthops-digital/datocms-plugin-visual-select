@@ -5,12 +5,11 @@ import type {RenderFieldExtensionCtx} from 'datocms-plugin-sdk';
 import get from 'lodash-es/get';
 import type {Collection, Option} from '../lib/types';
 import s from '../lib/styles.module.css';
+import {EMPTY_LENGTH, MESSAGE_NO_OPTIONS} from '../constants';
 
 type VisualSelectProps = {
 	ctx: RenderFieldExtensionCtx;
 };
-
-const EMPTY_LENGTH = 0;
 
 const VisualSelect = ({ctx}: VisualSelectProps): JSX.Element => {
 	const options = useMemo(() => {
@@ -30,7 +29,7 @@ const VisualSelect = ({ctx}: VisualSelectProps): JSX.Element => {
 	return (
 		<Canvas ctx={ctx}>
 			{options.length === EMPTY_LENGTH && (
-				<div className={s['no-options']}>There are no options available for this field.</div>
+				<div className={s['no-options']}>{MESSAGE_NO_OPTIONS}</div>
 			)}
 			<fieldset id={ctx.field.id} className={s['fieldset']}>
 				{options.map(option => (

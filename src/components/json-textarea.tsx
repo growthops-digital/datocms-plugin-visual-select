@@ -5,6 +5,7 @@ import type {Result} from '../lib/types';
 import {Success, Error, Question} from '../svgs';
 import s from '../lib/styles.module.css';
 import config from '../config';
+import {MESSAGE_VALID_CONFIG, MESSAGE_JSON_PARSE_ERROR} from '../constants';
 
 type JsonTextareaProps = {
 	label?: string;
@@ -19,9 +20,6 @@ type State = {
 	status?: 'error' | 'success';
 	message?: string;
 };
-
-const MESSAGE_VALID = 'Valid configuration detected';
-const MESSAGE_PARSE_ERROR = 'Could not parse JSON data';
 
 const statusIconMap: Record<string, React.ElementType> = {
 	success: Success,
@@ -44,7 +42,7 @@ const JsonTextarea = ({label, initialValue, onValidChange, onError, validate}: J
 				setState({
 					value,
 					status: 'success',
-					message: MESSAGE_VALID,
+					message: MESSAGE_VALID_CONFIG,
 				});
 
 				onValidChange(value);
@@ -64,12 +62,12 @@ const JsonTextarea = ({label, initialValue, onValidChange, onError, validate}: J
 			setState({
 				value,
 				status: 'error',
-				message: MESSAGE_PARSE_ERROR,
+				message: MESSAGE_JSON_PARSE_ERROR,
 			});
 
 			onError?.({
 				type: 'error',
-				message: MESSAGE_PARSE_ERROR,
+				message: MESSAGE_JSON_PARSE_ERROR,
 			});
 		}
 	}, []);
