@@ -22,14 +22,25 @@ const VisualSelect = ({ctx}: VisualSelectProps): JSX.Element => {
 
 	const currentValue = useMemo(() => get(ctx.formValues, ctx.fieldPath) as string, [ctx.formValues, ctx.fieldPath]);
 
+	const hasValidValue = useMemo(() => {
+		return options.map(option => option.value).includes(currentValue);
+	}, [options, currentValue]);
+
 	const handleOnChange = useCallback((event: ChangeEvent<HTMLInputElement>) => {
 		ctx.setFieldValue(ctx.fieldPath, event.target.value);
 	}, []);
 
 	return (
 		<Canvas ctx={ctx}>
+			{!hasValidValue && (
+				<div className={s['notice']}>
+					{/* eslint-disable-next-line max-len */}
+					<div>{`It appears that the current value of this field ("${currentValue}") does not match any of the available options.`}</div>
+					<div><b>Please select another option below.</b></div>
+				</div>
+			)}
 			{options.length === EMPTY_LENGTH && (
-				<div className={s['no-options']}>{MESSAGE_NO_OPTIONS}</div>
+				<div className={s['notice']}>{MESSAGE_NO_OPTIONS}</div>
 			)}
 			<fieldset id={ctx.field.id} className={s['fieldset']}>
 				{options.map(option => (

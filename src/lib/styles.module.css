@@ -186,9 +186,13 @@
 	margin-top: var(--spacing-l);
 }
 
-.no-options {
-	background: var(--light-color);
-	padding: var(--spacing-l);
+.notice {
+	background: var(--warning-bg-color);
+	padding: var(--spacing-m);
 	border-radius: 5px;
-	line-height: 1;
+	font-size: var(--font-size-xs);
+	margin-bottom: var(--spacing-m);
+	border-style: solid;
+	border-width: 1px;
+	border-color: var(--warning-color);
 }
