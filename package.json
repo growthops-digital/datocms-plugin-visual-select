@@ -2,7 +2,7 @@
 	"name": "datocms-plugin-visual-select",
 	"homepage": "https://github.com/growthops-digital/datocms-plugin-visual-select#readme",
 	"description": "Elegantly visualize a group of options in the DatoCMS Editor using colors, images, and more.",
-	"version": "0.1.11",
+	"version": "0.1.12",
 	"license": "UNLICENSED",
 	"keywords": [
 		"datocms-plugin"
