@@ -1,20 +1,14 @@
-<h2 align="center">Visual Select — a DatoCMS Plugin</h2>
-<div align="center">
-	<p>Elegantly visualize a group of options in the DatoCMS Editor using colors, images, and more.</p>
-</div>
+# Visual Select — a DatoCMS Plugin
+Elegantly visualize a group of options in the DatoCMS Editor using colors, images, and more.
 
-<p align="center">
-	<img src="https://user-images.githubusercontent.com/56568247/155078720-2736183f-424f-4fa2-a049-c8050566e335.jpg"/>
-</p>
+![](https://user-images.githubusercontent.com/56568247/155078720-2736183f-424f-4fa2-a049-c8050566e335.jpg)
 
 ---
 
 ## Configuration
 This plugin is designed to be used on a per-field basis. To get started, add a single-string text field to any model or block, and under the presentation tab change the field editor from "Text input" to "Visual Select".
 
-<p align="center">
-	<img src="https://user-images.githubusercontent.com/56568247/155075251-dca1b09a-afa3-4293-ba49-aadc41702206.png"/>
-</p>
+![](https://user-images.githubusercontent.com/56568247/155075251-dca1b09a-afa3-4293-ba49-aadc41702206.png)
 
 ### JSON Data Structure
 
@@ -65,9 +59,7 @@ You'll often have a collection of options that you want to make available across
 
 To supply a global presets object, navigate to the **Visual Select** plugin settings under **_Settings > Plugins > Visual Select_**.
 
-<p align="center">
-	<img src="https://user-images.githubusercontent.com/56568247/155076764-d671a857-eab4-4d9b-a0f7-818e17e1f96f.jpg"/>
-</p>
+![](https://user-images.githubusercontent.com/56568247/155076764-d671a857-eab4-4d9b-a0f7-818e17e1f96f.jpg)
 
 ### JSON Data Structure
 
@@ -126,6 +118,4 @@ You can extend multiple presets if required, and you can also supply additional 
 
 The example above would produce the following editor visualization (where `Green` and `Yellow` are coming from the `brandColors` preset, and `Blue` and `Purple` are from the additional options supplied):
 
-<p align="center">
-	<img src="https://user-images.githubusercontent.com/56568247/155077897-e11efc86-31bc-47a4-8233-3a60b1d74a3e.jpg"/>
-</p>
+![](https://user-images.githubusercontent.com/56568247/155077897-e11efc86-31bc-47a4-8233-3a60b1d74a3e.jpg)
