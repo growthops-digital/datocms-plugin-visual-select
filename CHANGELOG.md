@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.11](https://github.com/growthops-digital/datocms-plugin-visual-select/compare/v0.1.10...v0.1.11) (2022-02-24)
+
+
+### Features
+
+* notify editor when there are no options available for a field ([835b76c](https://github.com/growthops-digital/datocms-plugin-visual-select/commit/835b76c9adba1be86b755756862d0b0ea07783c9))
+* show a notice message to the editor when a field value has fallen out of sync with the available options ([89a93f0](https://github.com/growthops-digital/datocms-plugin-visual-select/commit/89a93f02c4ff1387c5209955e8572520504d9aba))
+
 ### [0.1.10](https://github.com/growthops-digital/datocms-plugin-visual-select/compare/v0.1.9...v0.1.10) (2022-02-23)
 
 
