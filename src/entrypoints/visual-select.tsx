@@ -5,7 +5,8 @@ import type {RenderFieldExtensionCtx} from 'datocms-plugin-sdk';
 import get from 'lodash-es/get';
 import type {Collection, Option} from '../lib/types';
 import s from '../lib/styles.module.css';
-import {EMPTY_LENGTH, MESSAGE_NO_OPTIONS} from '../constants';
+import {EMPTY_LENGTH} from '../constants';
+import lang, {EN_NO_VALUE_MATCH, EN_PLEASE_SELECT_OPTION, EN_NO_OPTIONS} from '../lang';
 
 type VisualSelectProps = {
 	ctx: RenderFieldExtensionCtx;
@@ -35,12 +36,16 @@ const VisualSelect = ({ctx}: VisualSelectProps): JSX.Element => {
 			{!hasValidValue && (
 				<div className={s['notice']}>
 					{/* eslint-disable-next-line max-len */}
-					<div>{`It appears that the current value of this field ("${currentValue}") does not match any of the available options.`}</div>
-					<div><b>Please select another option below.</b></div>
+					<div>{lang(EN_NO_VALUE_MATCH, {value: currentValue})}</div>
+					<div>
+						<b>{lang(EN_PLEASE_SELECT_OPTION)}</b>
+					</div>
 				</div>
 			)}
 			{options.length === EMPTY_LENGTH && (
-				<div className={s['notice']}>{MESSAGE_NO_OPTIONS}</div>
+				<div className={s['notice']}>
+					{lang(EN_NO_OPTIONS)}
+				</div>
 			)}
 			<fieldset id={ctx.field.id} className={s['fieldset']}>
 				{options.map(option => (

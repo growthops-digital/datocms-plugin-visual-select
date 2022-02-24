@@ -1,4 +1,10 @@
 import {isArray, isObject, isString, keys} from 'remeda';
+import lang, {
+	EN_DATA_NOT_OBJECT, EN_FIELD_IS_NOT_ARRAY,
+	EN_FIELD_IS_NOT_STRING_ARRAY, EN_OPTION_INVALID_TYPE,
+	EN_OPTION_MISSING_FIELD, EN_OPTION_NON_STRING_FIELD,
+	EN_PRESET_NOT_ARRAY, EN_OPTION_DATA_NOT_OBJECT,
+} from '../lang';
 import type {Result} from './types';
 
 const VALID_OPTION_KEYS = ['name', 'type', 'display', 'value'];
@@ -11,23 +17,23 @@ const error = (message: string): Result => ({
 
 const validateOption = (data: unknown, index: number): Result => {
 	if (!isObject(data)) {
-		return error('Option data is not an object');
+		return error(lang(EN_OPTION_DATA_NOT_OBJECT, {index: `${index}`}));
 	}
 
 	for (let i = 0; i < VALID_OPTION_KEYS.length; i++) {
 		const value = data[VALID_OPTION_KEYS[i]];
 
 		if (value === undefined) {
-			return error(`Option at position ${index} is missing the [${VALID_OPTION_KEYS[i]}] field`);
+			return error(lang(EN_OPTION_MISSING_FIELD, {index: `${index}`, field: VALID_OPTION_KEYS[i]}));
 		}
 
 		if (!isString(value)) {
-			return error(`Option at position ${index} has a non-string [${VALID_OPTION_KEYS[i]}] field`);
+			return error(lang(EN_OPTION_NON_STRING_FIELD, {index: `${index}`, field: VALID_OPTION_KEYS[i]}));
 		}
 	}
 
-	if (!VALID_OPTION_TYPES.includes(data.type as string)) {
-		return error(`Option at position ${index} has an invalid type of "${data.type as string}"`);
+	if (isString(data.type) && !VALID_OPTION_TYPES.includes(data.type)) {
+		return error(lang(EN_OPTION_INVALID_TYPE, {index: `${index}`, type: data.type}));
 	}
 
 	return {
@@ -37,7 +43,7 @@ const validateOption = (data: unknown, index: number): Result => {
 
 const validatePresetsConfig = (data: unknown): Result => {
 	if (!isObject(data)) {
-		return error('Presets data is not an object');
+		return error(lang(EN_DATA_NOT_OBJECT, {field: 'Preset'}));
 	}
 
 	const presets = keys(data);
@@ -46,7 +52,7 @@ const validatePresetsConfig = (data: unknown): Result => {
 		const preset = data[presets[i]];
 
 		if (!isArray(preset)) {
-			return error(`Preset at position ${i} is not an array`);
+			return error(lang(EN_PRESET_NOT_ARRAY, {index: `${i}`}));
 		}
 
 		for (let j = 0; j < preset.length; j++) {
@@ -67,19 +73,19 @@ const validatePresetsConfig = (data: unknown): Result => {
 
 const validateFieldConfig = (data: unknown): Result => {
 	if (!isObject(data)) {
-		return error('Config data is not an object');
+		return error(lang(EN_DATA_NOT_OBJECT, {field: 'Config'}));
 	}
 
 	if (data.extends !== undefined && !isArray(data.extends)) {
-		return error('[Extends] is not an array');
+		return error(lang(EN_FIELD_IS_NOT_ARRAY, {field: 'Extends'}));
 	}
 
 	if (data.extends !== undefined && isArray(data.extends) && !data.extends.every(isString)) {
-		return error('[Extends] is not an array of strings');
+		return error(lang(EN_FIELD_IS_NOT_STRING_ARRAY, {field: 'Extends'}));
 	}
 
 	if (data.options !== undefined && !isArray(data.options)) {
-		return error('[Options] is not an array');
+		return error(lang(EN_FIELD_IS_NOT_ARRAY, {field: 'Options'}));
 	}
 
 	if (data.options !== undefined && isArray(data.options)) {

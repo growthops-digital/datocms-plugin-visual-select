@@ -5,7 +5,9 @@ import type {Result} from '../lib/types';
 import {Success, Error, Question} from '../svgs';
 import s from '../lib/styles.module.css';
 import config from '../config';
-import {MESSAGE_VALID_CONFIG, MESSAGE_JSON_PARSE_ERROR} from '../constants';
+import lang, {
+	EN_VALID_CONFIG, EN_JSON_PARSE_ERROR, EN_VIEW_DOCUMENTATION,
+} from '../lang';
 
 type JsonTextareaProps = {
 	label?: string;
@@ -42,7 +44,7 @@ const JsonTextarea = ({label, initialValue, onValidChange, onError, validate}: J
 				setState({
 					value,
 					status: 'success',
-					message: MESSAGE_VALID_CONFIG,
+					message: lang(EN_VALID_CONFIG),
 				});
 
 				onValidChange(value);
@@ -62,12 +64,12 @@ const JsonTextarea = ({label, initialValue, onValidChange, onError, validate}: J
 			setState({
 				value,
 				status: 'error',
-				message: MESSAGE_JSON_PARSE_ERROR,
+				message: lang(EN_JSON_PARSE_ERROR),
 			});
 
 			onError?.({
 				type: 'error',
-				message: MESSAGE_JSON_PARSE_ERROR,
+				message: lang(EN_JSON_PARSE_ERROR),
 			});
 		}
 	}, []);
@@ -90,7 +92,7 @@ const JsonTextarea = ({label, initialValue, onValidChange, onError, validate}: J
 				)}
 				<a target="_blank" rel="noreferrer" href={config.endpoints.docs} className={s['docs-container']}>
 					<Question className={s['docs-icon']}/>
-					<span className={s['docs-label']}>View Documentation</span>
+					<span className={s['docs-label']}>{lang(EN_VIEW_DOCUMENTATION)}</span>
 				</a>
 			</div>
 			<textarea

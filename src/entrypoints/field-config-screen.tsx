@@ -6,6 +6,7 @@ import {validateFieldConfig} from '../lib/validators';
 import {JsonTextarea} from '../components';
 import type {Result} from '../lib/types';
 import {EMPTY_LENGTH, JSON_INDENT_SIZE} from '../constants';
+import lang, {EN_FIELD_CONFIGURATION} from '../lang';
 
 type FieldConfigScreenProps = {
   ctx: RenderManualFieldExtensionConfigScreenCtx;
@@ -67,7 +68,7 @@ const FieldConfigScreen = ({ctx}: FieldConfigScreenProps): JSX.Element => {
 	return (
 		<Canvas ctx={ctx}>
 			<JsonTextarea
-				label="Field Configuration"
+				label={lang(EN_FIELD_CONFIGURATION)}
 				initialValue={state.collection}
 				validate={validateFieldConfig}
 				onValidChange={handleOnChange}

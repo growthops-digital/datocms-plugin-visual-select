@@ -7,7 +7,11 @@ import {JsonTextarea} from '../components';
 import type {Result} from '../lib/types';
 import s from '../lib/styles.module.css';
 import config from '../config';
-import {JSON_INDENT_SIZE, MESSAGE_SETTINGS_UPDATED} from '../constants';
+import {JSON_INDENT_SIZE} from '../constants';
+import lang, {
+	EN_CHANGELOG, EN_DOCUMENTATION, EN_GET_STARTED,
+	EN_ISSUES_FEATURES, EN_SAVE_SETTINGS, EN_SETTINGS_UPDATED,
+} from '../lang';
 
 type GlobalConfigScreenProps = {
 	ctx: RenderConfigScreenCtx;
@@ -40,7 +44,7 @@ const GlobalConfigScreen = ({ctx}: GlobalConfigScreenProps): JSX.Element => {
 		event.preventDefault();
 
 		await ctx.updatePluginParameters(formatParameters(state.parameters));
-		ctx.notice(MESSAGE_SETTINGS_UPDATED);
+		ctx.notice(lang(EN_SETTINGS_UPDATED));
 	}, [state]);
 
 	const handleOnChange = useCallback((value: string) => {
@@ -62,14 +66,14 @@ const GlobalConfigScreen = ({ctx}: GlobalConfigScreenProps): JSX.Element => {
 	return (
 		<Canvas ctx={ctx}>
 			<div className={s['preset-help']}>
-				<span className={s['preset-help-header']}>Get started:</span>
+				<span className={s['preset-help-header']}>{lang(EN_GET_STARTED)}</span>
 				<a
 					target="_blank"
 					rel="noreferrer"
 					className={s['preset-help-link']}
 					href={config.endpoints.docs}
 				>
-					Documentation
+					{lang(EN_DOCUMENTATION)}
 				</a>
 				<a
 					target="_blank"
@@ -77,7 +81,7 @@ const GlobalConfigScreen = ({ctx}: GlobalConfigScreenProps): JSX.Element => {
 					className={s['preset-help-link']}
 					href={config.endpoints.issues}
 				>
-					Issues / Feature Requests
+					{lang(EN_ISSUES_FEATURES)}
 				</a>
 				<a
 					target="_blank"
@@ -85,7 +89,7 @@ const GlobalConfigScreen = ({ctx}: GlobalConfigScreenProps): JSX.Element => {
 					className={s['preset-help-link']}
 					href={config.endpoints.changelog}
 				>
-					Changelog
+					{lang(EN_CHANGELOG)}
 				</a>
 			</div>
 			<form className={s['presets-config-form']} onSubmit={handleOnSubmit}>
@@ -105,7 +109,7 @@ const GlobalConfigScreen = ({ctx}: GlobalConfigScreenProps): JSX.Element => {
 					buttonType="primary"
 					disabled={!state.valid}
 				>
-					Save settings
+					{lang(EN_SAVE_SETTINGS)}
 				</Button>
 			</form>
 		</Canvas>
