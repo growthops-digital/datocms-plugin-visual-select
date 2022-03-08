@@ -7,6 +7,7 @@ import type {Collection, Option} from '../lib/types';
 import s from '../lib/styles.module.css';
 import {EMPTY_LENGTH} from '../constants';
 import lang, {EN_NO_VALUE_MATCH, EN_PLEASE_SELECT_OPTION, EN_NO_OPTIONS} from '../lang';
+import Visualizer from '../components/visualizers/visualizer';
 
 type VisualSelectProps = {
 	ctx: RenderFieldExtensionCtx;
@@ -35,7 +36,6 @@ const VisualSelect = ({ctx}: VisualSelectProps): JSX.Element => {
 		<Canvas ctx={ctx}>
 			{!hasValidValue && (
 				<div className={s['notice']}>
-					{/* eslint-disable-next-line max-len */}
 					<div>{lang(EN_NO_VALUE_MATCH, {value: currentValue})}</div>
 					<div>
 						<b>{lang(EN_PLEASE_SELECT_OPTION)}</b>
@@ -60,14 +60,7 @@ const VisualSelect = ({ctx}: VisualSelectProps): JSX.Element => {
 							onChange={handleOnChange}
 						/>
 						<div className={s['mark']}>
-							{option.type === 'color' && (
-								<div className={s['color-preview']} style={{backgroundColor: option.display}}/>
-							)}
-							{option.type === 'image' && (
-								<div className={s['image-preview-container']}>
-									<img src={option.display} alt={option.name} className={s['image-preview']}/>
-								</div>
-							)}
+							<Visualizer type={option.type} name={option.name} display={option.display}/>
 							<span className={s['name']}>{option.name}</span>
 						</div>
 					</label>
