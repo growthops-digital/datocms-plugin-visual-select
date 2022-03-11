@@ -108,6 +108,7 @@ const GlobalConfigScreen = ({ctx}: GlobalConfigScreenProps): JSX.Element => {
 					buttonSize="l"
 					buttonType="primary"
 					disabled={!state.valid}
+					className={s['space-top']}
 				>
 					{lang(EN_SAVE_SETTINGS)}
 				</Button>

@@ -1,6 +1,7 @@
 import React, {useCallback, useMemo, useState} from 'react';
 import type {ChangeEvent} from 'react';
 import cn from 'classnames';
+import CodeEditor from '@uiw/react-textarea-code-editor';
 import type {Result} from '../lib/types';
 import {Success, Error, Question} from '../svgs';
 import s from '../lib/styles.module.css';
@@ -95,12 +96,15 @@ const JsonTextarea = ({label, initialValue, onValidChange, onError, validate}: J
 					<span className={s['docs-label']}>{lang(EN_VIEW_DOCUMENTATION)}</span>
 				</a>
 			</div>
-			<textarea
-				rows={10}
-				className={s['textarea']}
-				value={state.value}
-				onChange={handleOnChange}
-			/>
+			<div className={s['code-editor-wrapper']}>
+				<CodeEditor
+					value={state.value}
+					language="json"
+					padding={16}
+					className={s['code-editor']}
+					onChange={handleOnChange}
+				/>
+			</div>
 			{state.status && (
 				<div className={statusBarClasses}>
 					<StatusIcon className={s['status-icon']}/>
