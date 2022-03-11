@@ -34,6 +34,12 @@ const formatParameters = (parameters: Parameters): Parameters => {
 	};
 };
 
+const gettingStartedLinks = [
+	{url: config.endpoints.docs, label: lang(EN_DOCUMENTATION)},
+	{url: config.endpoints.issues, label: lang(EN_ISSUES_FEATURES)},
+	{url: config.endpoints.changelog, label: lang(EN_CHANGELOG)},
+];
+
 const GlobalConfigScreen = ({ctx}: GlobalConfigScreenProps): JSX.Element => {
 	const [state, setState] = useState<State>({
 		parameters: ctx.plugin.attributes.parameters as Parameters,
@@ -67,30 +73,17 @@ const GlobalConfigScreen = ({ctx}: GlobalConfigScreenProps): JSX.Element => {
 		<Canvas ctx={ctx}>
 			<div className={s['preset-help']}>
 				<span className={s['preset-help-header']}>{lang(EN_GET_STARTED)}</span>
-				<a
-					target="_blank"
-					rel="noreferrer"
-					className={s['preset-help-link']}
-					href={config.endpoints.docs}
-				>
-					{lang(EN_DOCUMENTATION)}
-				</a>
-				<a
-					target="_blank"
-					rel="noreferrer"
-					className={s['preset-help-link']}
-					href={config.endpoints.issues}
-				>
-					{lang(EN_ISSUES_FEATURES)}
-				</a>
-				<a
-					target="_blank"
-					rel="noreferrer"
-					className={s['preset-help-link']}
-					href={config.endpoints.changelog}
-				>
-					{lang(EN_CHANGELOG)}
-				</a>
+				{gettingStartedLinks.map(entry => (
+					<a
+						key={entry.label}
+						target="_blank"
+						rel="noreferrer"
+						className={s['preset-help-link']}
+						href={entry.url}
+					>
+						{entry.label}
+					</a>
+				))}
 			</div>
 			<form className={s['presets-config-form']} onSubmit={handleOnSubmit}>
 				<FieldGroup>
