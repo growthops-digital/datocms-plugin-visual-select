@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.13](https://github.com/growthops-digital/datocms-plugin-visual-select/compare/v0.1.12...v0.1.13) (2022-03-11)
+
+
+### Features
+
+* replace vanilla textarea with JSON code-editor ([a202aed](https://github.com/growthops-digital/datocms-plugin-visual-select/commit/a202aeda4aeb504d0fd2c7507a6c180635fe62c7))
+
 ### [0.1.12](https://github.com/growthops-digital/datocms-plugin-visual-select/compare/v0.1.11...v0.1.12) (2022-02-24)
 
 ### [0.1.11](https://github.com/growthops-digital/datocms-plugin-visual-select/compare/v0.1.10...v0.1.11) (2022-02-24)
