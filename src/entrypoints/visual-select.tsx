@@ -30,7 +30,7 @@ const VisualSelect = ({ctx}: VisualSelectProps): JSX.Element => {
 	const currentValue = useMemo(() => get(ctx.formValues, ctx.fieldPath) as string, [ctx.formValues, ctx.fieldPath]);
 
 	const hasValidValue = useMemo(() => {
-		return options.map(option => option.value).includes(currentValue);
+		return [...options, {value: null}].map(option => option.value).includes(currentValue);
 	}, [options, currentValue]);
 
 	const handleOnChange = useCallback((event: ChangeEvent<HTMLInputElement>) => {
