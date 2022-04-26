@@ -15,8 +15,13 @@ type VisualSelectProps = {
 
 const VisualSelect = ({ctx}: VisualSelectProps): JSX.Element => {
 	const options = useMemo(() => {
+		let allPresets: Record<string, Option[]> = {};
+
+		if (ctx.plugin.attributes.parameters.presets !== undefined) {
+			allPresets = JSON.parse(ctx.plugin.attributes.parameters.presets as string) as Record<string, Option[]>;
+		}
+
 		const collection = JSON.parse(ctx.parameters.collection as string) as Collection;
-		const allPresets = JSON.parse(ctx.plugin.attributes.parameters.presets as string) as Record<string, Option[]>;
 		const presetOptions = (collection.extends ?? []).flatMap(key => allPresets[key]);
 
 		return [...presetOptions, ...collection.options ?? []];
