@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.14](https://github.com/growthops-digital/datocms-plugin-visual-select/compare/v0.1.13...v0.1.14) (2022-04-26)
+
+
+### Bug Fixes
+
+* ensure that presets have a sensible fallback in the VisualSelect component when not globally defined ([d204c4a](https://github.com/growthops-digital/datocms-plugin-visual-select/commit/d204c4a4a4f917d03caa77d390016fe7a7256c43))
+* ensure that the value mismatch warning is silenced for intial null value states ([98420ac](https://github.com/growthops-digital/datocms-plugin-visual-select/commit/98420acecf9aed536edf0676744a9d415d7c101a))
+
 ### [0.1.13](https://github.com/growthops-digital/datocms-plugin-visual-select/compare/v0.1.12...v0.1.13) (2022-03-11)
 
 
