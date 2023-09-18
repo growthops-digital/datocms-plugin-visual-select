@@ -1,4 +1,5 @@
 # Visual Select — a DatoCMS Plugin
+
 Elegantly visualize a group of options in the DatoCMS Editor using colors, images, and more.
 
 ![](https://user-images.githubusercontent.com/56568247/155078720-2736183f-424f-4fa2-a049-c8050566e335.jpg)
@@ -6,6 +7,7 @@ Elegantly visualize a group of options in the DatoCMS Editor using colors, image
 ---
 
 ## Configuration
+
 This plugin is designed to be used on a per-field basis. To get started, add a single-string text field to any model or block, and under the presentation tab change the field editor from "Text input" to "Visual Select".
 
 ![](https://user-images.githubusercontent.com/56568247/155075251-dca1b09a-afa3-4293-ba49-aadc41702206.png)
@@ -18,19 +20,31 @@ To understand the behaviour of `extends`, see the [Global Presets](#global-prese
 
 `options` represents each visual option displayed to the editor, as well the underlying value returned by the API. There are 4 required fields on each option:
 
-| Key | Value | Description |
-| --- | --- | --- |
-| `name` | `string` | The label displayed in the editor |
-| `type` | `string` | The visualization type, see table below |
+| Key       | Value    | Description                                      |
+| --------- | -------- | ------------------------------------------------ |
+| `name`    | `string` | The label displayed in the editor                |
+| `type`    | `string` | The visualization type, see table below          |
 | `display` | `string` | The visualization display value, see table below |
-| `value` | `string` | The value returned by the API |
+| `value`   | `string` | The value returned by the API                    |
 
 #### Visualization displays
 
-| Type | Display | Example |
-| --- | --- | --- |
-| `color` | `hex` | `#bada55` |
-| `image` | `url` | `https://example.com/my-icon.svg` |
+| Type    | Display | Example                           |
+| ------- | ------- | --------------------------------- |
+| `color` | `hex`   | `#bada55`                         |
+| `image` | `url`   | `https://example.com/my-icon.svg` |
+
+### Visualization
+
+There is also a third optional field you can add called `presentation`
+
+`presentation` Is an object representing how the options should be displayed. It has 3 optional fields:
+
+| Key       | Value     | Description                                                                  |
+| --------- | --------- | ---------------------------------------------------------------------------- |
+| `type`    | `string`  | The presentation type, can be `grid` or `carousel`                           |
+| `columns` | `integer` | The number of columns, used only if the type `grid` was selected             |
+| `width`   | `string`  | The width of each option item, used only if the type `carousel` was selected |
 
 ### Example configuration
 
@@ -90,7 +104,7 @@ and then in an individual field's configuration object, use the `extends` key:
 
 ```json
 {
-    "extends": ["brandColors"]
+	"extends": ["brandColors"]
 }
 ```
 
