@@ -67,7 +67,7 @@ const VisualSelect = ({ctx}: VisualSelectProps): JSX.Element => {
 		return {
 			display: presentation.type === 'carousel' ? 'flex' : defaults.display,
 			gridTemplateColumns: `repeat(${
-				presentation.columns ?? defaults.columns
+				presentation.columns ?? defaults.columns as number
 			}, 1fr)`,
 		};
 	}, [presentation]);
