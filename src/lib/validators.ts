@@ -1,14 +1,21 @@
 import {isArray, isObject, isString, keys} from 'remeda';
 import lang, {
-	EN_DATA_NOT_OBJECT, EN_FIELD_IS_NOT_ARRAY,
-	EN_FIELD_IS_NOT_STRING_ARRAY, EN_OPTION_INVALID_TYPE,
-	EN_OPTION_MISSING_FIELD, EN_OPTION_NON_STRING_FIELD,
-	EN_PRESET_NOT_ARRAY, EN_OPTION_DATA_NOT_OBJECT,
+	EN_DATA_NOT_OBJECT,
+	EN_FIELD_IS_NOT_ARRAY,
+	EN_FIELD_IS_NOT_STRING_ARRAY,
+	EN_OPTION_INVALID_TYPE,
+	EN_OPTION_MISSING_FIELD,
+	EN_OPTION_NON_STRING_FIELD,
+	EN_PRESET_NOT_ARRAY,
+	EN_OPTION_DATA_NOT_OBJECT,
+	EN_INVALID_PRESENTATION_PARAMETERS,
+	EN_PRESENTTION_IS_NOT_OBJECT,
 } from '../lang';
 import type {Result} from './types';
 
 const VALID_OPTION_KEYS = ['name', 'type', 'display', 'value'];
 const VALID_OPTION_TYPES = ['color', 'image'];
+const VALID_PRESENTATION_KEYS = ['type', 'columns', 'width'];
 
 const error = (message: string): Result => ({
 	type: 'error',
@@ -24,16 +31,28 @@ const validateOption = (data: unknown, index: number): Result => {
 		const value = data[VALID_OPTION_KEYS[i]];
 
 		if (value === undefined) {
-			return error(lang(EN_OPTION_MISSING_FIELD, {index: `${index}`, field: VALID_OPTION_KEYS[i]}));
+			return error(
+				lang(EN_OPTION_MISSING_FIELD, {
+					index: `${index}`,
+					field: VALID_OPTION_KEYS[i],
+				}),
+			);
 		}
 
 		if (!isString(value)) {
-			return error(lang(EN_OPTION_NON_STRING_FIELD, {index: `${index}`, field: VALID_OPTION_KEYS[i]}));
+			return error(
+				lang(EN_OPTION_NON_STRING_FIELD, {
+					index: `${index}`,
+					field: VALID_OPTION_KEYS[i],
+				}),
+			);
 		}
 	}
 
 	if (isString(data.type) && !VALID_OPTION_TYPES.includes(data.type)) {
-		return error(lang(EN_OPTION_INVALID_TYPE, {index: `${index}`, type: data.type}));
+		return error(
+			lang(EN_OPTION_INVALID_TYPE, {index: `${index}`, type: data.type}),
+		);
 	}
 
 	return {
@@ -80,7 +99,11 @@ const validateFieldConfig = (data: unknown): Result => {
 		return error(lang(EN_FIELD_IS_NOT_ARRAY, {field: 'Extends'}));
 	}
 
-	if (data.extends !== undefined && isArray(data.extends) && !data.extends.every(isString)) {
+	if (
+		data.extends !== undefined &&
+		isArray(data.extends) &&
+		!data.extends.every(isString)
+	) {
 		return error(lang(EN_FIELD_IS_NOT_STRING_ARRAY, {field: 'Extends'}));
 	}
 
@@ -99,13 +122,22 @@ const validateFieldConfig = (data: unknown): Result => {
 		}
 	}
 
+	if (data.presentation !== undefined && !isObject(data.presentation)) {
+		return error(lang(EN_PRESENTTION_IS_NOT_OBJECT));
+	}
+
+	if (
+		data.presentation !== undefined &&
+		!Object.keys(data.presentation as object).every((key) =>
+			VALID_PRESENTATION_KEYS.includes(key),
+		)
+	) {
+		return error(lang(EN_INVALID_PRESENTATION_PARAMETERS));
+	}
+
 	return {
 		type: 'success',
 	};
 };
 
-export {
-	validatePresetsConfig,
-	validateOption,
-	validateFieldConfig,
-};
+export {validatePresetsConfig, validateOption, validateFieldConfig};

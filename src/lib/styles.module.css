@@ -72,7 +72,7 @@
 .image-preview-container {
 	background: var(--light-bg-color);
 	border-radius: 3px;
-	padding-top: 100%;
+	padding-top: 75%;
 	position: relative;
 }
 
@@ -180,6 +180,7 @@
 
 .preset-help-link {
 	margin-left: var(--spacing-m);
+	color: var(--base-body-color);
 }
 
 .presets-config-form {
@@ -195,4 +196,22 @@
 	border-style: solid;
 	border-width: 1px;
 	border-color: var(--warning-color);
+}
+
+.carousel-scroll-container {
+	overflow-x: scroll;
+	white-space: nowrap;
+	padding-bottom: 1rem;
+}
+
+.scroll-container {
+	overflow-x: scroll;
+	white-space: nowrap;
+}
+
+@media screen and (max-width: 600px) {
+	.preset-help {
+		flex-direction: column;
+		gap: 0.5rem;
+	}
 }
