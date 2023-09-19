@@ -6,11 +6,7 @@ import get from 'lodash-es/get';
 import type {Collection, Option} from '../lib/types';
 import s from '../lib/styles.module.css';
 import {EMPTY_LENGTH} from '../constants';
-import lang, {
-	EN_NO_VALUE_MATCH,
-	EN_PLEASE_SELECT_OPTION,
-	EN_NO_OPTIONS,
-} from '../lang';
+import lang, {EN_NO_VALUE_MATCH, EN_PLEASE_SELECT_OPTION, EN_NO_OPTIONS} from '../lang';
 import Visualizer from '../components/visualizers/visualizer';
 
 type VisualSelectProps = {
@@ -30,22 +26,13 @@ const VisualSelect = ({ctx}: VisualSelectProps): JSX.Element => {
 		let allPresets: Record<string, Option[]> = {};
 
 		if (ctx.plugin.attributes.parameters.presets !== undefined) {
-			allPresets = JSON.parse(
-				ctx.plugin.attributes.parameters.presets as string,
-			) as Record<string, Option[]>;
+			allPresets = JSON.parse(ctx.plugin.attributes.parameters.presets as string) as Record<string, Option[]>;
 		}
 
-		const collection = JSON.parse(
-			ctx.parameters.collection as string,
-		) as Collection;
-		const presetOptions = (collection.extends ?? []).flatMap(
-			(key) => allPresets[key],
-		);
+		const collection = JSON.parse(ctx.parameters.collection as string) as Collection;
+		const presetOptions = (collection.extends ?? []).flatMap((key) => allPresets[key]);
 
-		return [
-			[...presetOptions, ...collection.options ?? []],
-			collection.presentation ?? {},
-		];
+		return [[...presetOptions, ...collection.options ?? []], collection.presentation ?? {}];
 	}, [ctx.parameters.collection, ctx.plugin.attributes.parameters.presets]);
 
 	const currentValue = useMemo(
@@ -66,9 +53,7 @@ const VisualSelect = ({ctx}: VisualSelectProps): JSX.Element => {
 	const customStyle: CSSProperties = useMemo(() => {
 		return {
 			display: presentation.type === 'carousel' ? 'flex' : defaults.display,
-			gridTemplateColumns: `repeat(${
-				presentation.columns ?? defaults.columns as number
-			}, 1fr)`,
+			gridTemplateColumns: `repeat(${presentation.columns ?? defaults.columns as number}, 1fr)`,
 		};
 	}, [presentation]);
 
@@ -102,22 +87,10 @@ const VisualSelect = ({ctx}: VisualSelectProps): JSX.Element => {
 			{options.length === EMPTY_LENGTH && (
 				<div className={s['notice']}>{lang(EN_NO_OPTIONS)}</div>
 			)}
-			<div
-				className={
-					presentation.type === 'carousel' ? s['carousel-scroll-container'] : ''
-				}
-			>
-				<fieldset
-					style={customStyle}
-					id={ctx.field.id}
-					className={s['fieldset']}
-				>
+			<div className={presentation.type === 'carousel' ? s['carousel-scroll-container'] : ''}>
+				<fieldset style={customStyle} id={ctx.field.id} className={s['fieldset']}>
 					{options.map((option) => (
-						<label
-							key={option.name}
-							className={s['label']}
-							htmlFor={`${option.name}_${ctx.field.id}`}
-						>
+						<label key={option.name} className={s['label']} htmlFor={`${option.name}_${ctx.field.id}`}>
 							<input
 								id={`${option.name}_${ctx.field.id}`}
 								className={s['radio']}
@@ -132,11 +105,7 @@ const VisualSelect = ({ctx}: VisualSelectProps): JSX.Element => {
 								style={customWidth}
 								className={s['mark']}
 							>
-								<Visualizer
-									type={option.type}
-									name={option.name}
-									display={option.display}
-								/>
+								<Visualizer type={option.type} name={option.name} display={option.display}/>
 								<span className={s['name']}>{option.name}</span>
 							</div>
 						</label>

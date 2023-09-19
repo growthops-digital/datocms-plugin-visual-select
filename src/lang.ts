@@ -1,9 +1,9 @@
 /* eslint-disable max-len */
+
 import {keys} from 'remeda';
 import {EMPTY_LENGTH} from './constants';
 
-const EN_NO_VALUE_MATCH =
-	'It appears that the current value of this field ("::value") does not match any of the available options.';
+const EN_NO_VALUE_MATCH = 'It appears that the current value of this field ("::value") does not match any of the available options.';
 const EN_PLEASE_SELECT_OPTION = 'Please select another option below.';
 const EN_VALID_CONFIG = 'Valid configuration detected';
 const EN_JSON_PARSE_ERROR = 'Could not parse JSON data';
@@ -16,12 +16,9 @@ const EN_CHANGELOG = 'Changelog';
 const EN_SAVE_SETTINGS = 'Save settings';
 const EN_VIEW_DOCUMENTATION = 'View Documentation';
 const EN_FIELD_CONFIGURATION = 'Field Configuration';
-const EN_OPTION_MISSING_FIELD =
-	'Option at position ::index is missing the "::field" field';
-const EN_OPTION_NON_STRING_FIELD =
-	'Option at position ::index has a non-string "::field" field';
-const EN_OPTION_INVALID_TYPE =
-	'Option at position ::index has an invalid type "::type"';
+const EN_OPTION_MISSING_FIELD = 'Option at position ::index is missing the "::field" field';
+const EN_OPTION_NON_STRING_FIELD = 'Option at position ::index has a non-string "::field" field';
+const EN_OPTION_INVALID_TYPE = 'Option at position ::index has an invalid type "::type"';
 const EN_OPTION_DATA_NOT_OBJECT = 'Option at position ::index is not an object';
 const EN_PRESET_NOT_ARRAY = 'Preset at position ::index is not an array';
 const EN_DATA_NOT_OBJECT = '::field data is not an object';

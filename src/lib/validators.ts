@@ -50,9 +50,7 @@ const validateOption = (data: unknown, index: number): Result => {
 	}
 
 	if (isString(data.type) && !VALID_OPTION_TYPES.includes(data.type)) {
-		return error(
-			lang(EN_OPTION_INVALID_TYPE, {index: `${index}`, type: data.type}),
-		);
+		return error(lang(EN_OPTION_INVALID_TYPE, {index: `${index}`, type: data.type}));
 	}
 
 	return {
@@ -99,11 +97,7 @@ const validateFieldConfig = (data: unknown): Result => {
 		return error(lang(EN_FIELD_IS_NOT_ARRAY, {field: 'Extends'}));
 	}
 
-	if (
-		data.extends !== undefined &&
-		isArray(data.extends) &&
-		!data.extends.every(isString)
-	) {
+	if (data.extends !== undefined && isArray(data.extends) && !data.extends.every(isString)) {
 		return error(lang(EN_FIELD_IS_NOT_STRING_ARRAY, {field: 'Extends'}));
 	}
 
@@ -128,9 +122,7 @@ const validateFieldConfig = (data: unknown): Result => {
 
 	if (
 		data.presentation !== undefined &&
-		!Object.keys(data.presentation as object).every((key) =>
-			VALID_PRESENTATION_KEYS.includes(key),
-		)
+		!Object.keys(data.presentation as object).every((key) => VALID_PRESENTATION_KEYS.includes(key))
 	) {
 		return error(lang(EN_INVALID_PRESENTATION_PARAMETERS));
 	}
