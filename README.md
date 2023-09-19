@@ -42,7 +42,7 @@ There is also a third optional field you can add called `presentation`
 
 | Key       | Value     | Description                                                                  |
 | --------- | --------- | ---------------------------------------------------------------------------- |
-| `type`    | `string`  | The presentation type, can be either `grid` or `carousel`                           |
+| `type`    | `string`  | The presentation type, can be either `grid` or `carousel`                    |
 | `columns` | `integer` | The number of columns, used only if the type `grid` was selected             |
 | `width`   | `string`  | The width of each option item, used only if the type `carousel` was selected |
 
