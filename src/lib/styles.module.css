@@ -202,6 +202,9 @@
 	overflow-x: scroll;
 	white-space: nowrap;
 	padding-bottom: 1rem;
+	/* 3px here ensures that the outline hover effect on cards
+	is not clipped off by the hidden overflow */
+	padding-top: 3px;
 }
 
 .scroll-container {
