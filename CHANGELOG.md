@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.15](https://github.com/growthops-digital/datocms-plugin-visual-select/compare/v0.1.14...v0.1.15) (2023-09-19)
+
+
+### Features
+
+* allow options to be displayed in a grid or carousel via a per-field presentation option ([82d0684](https://github.com/growthops-digital/datocms-plugin-visual-select/commit/82d0684c647eb7db60f883404ed4c0f08628ee63))
+
 ### [0.1.14](https://github.com/growthops-digital/datocms-plugin-visual-select/compare/v0.1.13...v0.1.14) (2022-04-26)
 
 
