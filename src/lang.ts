@@ -27,7 +27,7 @@ const EN_PRESET_NOT_ARRAY = 'Preset at position ::index is not an array';
 const EN_DATA_NOT_OBJECT = '::field data is not an object';
 const EN_FIELD_IS_NOT_ARRAY = '"::field" is not an array';
 const EN_FIELD_IS_NOT_STRING_ARRAY = '"::field" is not an array of strings';
-const EN_PRESET_IS_NOT_OBJECT = 'Preset is not an object';
+const EN_PRESENTTION_IS_NOT_OBJECT = 'Presentation is not an object';
 const EN_INVALID_PRESENTATION_PARAMETERS = 'The presentation contains invalid parameters';
 
 const lang = (
@@ -50,7 +50,7 @@ const lang = (
 export default lang;
 
 export {
-	EN_PRESET_IS_NOT_OBJECT,
+	EN_PRESENTTION_IS_NOT_OBJECT,
 	EN_INVALID_PRESENTATION_PARAMETERS,
 	EN_NO_VALUE_MATCH,
 	EN_PLEASE_SELECT_OPTION,

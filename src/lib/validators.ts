@@ -8,8 +8,8 @@ import lang, {
 	EN_OPTION_NON_STRING_FIELD,
 	EN_PRESET_NOT_ARRAY,
 	EN_OPTION_DATA_NOT_OBJECT,
-	EN_PRESET_IS_NOT_OBJECT,
 	EN_INVALID_PRESENTATION_PARAMETERS,
+	EN_PRESENTTION_IS_NOT_OBJECT,
 } from '../lang';
 import type {Result} from './types';
 
@@ -122,13 +122,13 @@ const validateFieldConfig = (data: unknown): Result => {
 		}
 	}
 
-	if (data.presentation !== undefined && !isObject(data.options)) {
-		return error(lang(EN_PRESET_IS_NOT_OBJECT));
+	if (data.presentation !== undefined && !isObject(data.presentation)) {
+		return error(lang(EN_PRESENTTION_IS_NOT_OBJECT));
 	}
 
 	if (
 		data.presentation !== undefined &&
-		Object.keys(data.present as object).every((key) =>
+		!Object.keys(data.presentation as object).every((key) =>
 			VALID_PRESENTATION_KEYS.includes(key),
 		)
 	) {
